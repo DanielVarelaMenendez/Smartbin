@@ -1,0 +1,84 @@
+<!DOCTYPE HTML><html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <title>SMARTBIN DVM</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        header {
+            margin: 0;
+            padding-top: 8vh;
+            padding-bottom: 5vh;
+            overflow: hidden;
+            background-image: url(smartbin.jpg);
+            background-size: cover;
+            color: black;
+        }
+        h2 {
+            font-size: 2.0rem;
+        }
+        p { font-size: 1.2rem; }
+        .units { font-size: 1.2rem; }
+        .readings { font-size: 2.0rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>SMARTBIN DVM</h2>
+        <p><strong>Último paquete recibido:<br/><span id="timestamp">%TIMESTAMP%</span>
+        </strong></p>
+        <p>LoRa RSSI: <span id="rssi">%RSSI%</span></p>
+    </header>
+    <main>
+        <p>
+            <i style='font-size:24px' class='far'>&#xf15b;</i> Nivel Carton/Papel: <span
+            id="nivel_carton" class="readings">%NIVEL_CARTON%</span>
+            <sup>&#37;</sup>
+        </p>
+        <p>
+            <i style='font-size:24px' class='fas'>&#xf076;</i> Nivel Metal: <span
+            id="nivel_metal" class="readings">%NIVEL_METAL%</span>
+            <sup>&#37;</sup>
+        </p>
+        <p>
+            <i style='font-size:24px' class='fas'>&#xf0c3;</i> Nivel Vidrio: <span
+            id="nivel_vidrio" class="readings">%NIVEL_VIDRIO%</span>
+            <sup>&#37;</sup>
+        </p>
+        <p>
+            <i style='font-size:24px' class='fas'>&#xf5d1;</i> Nivel Organico: <span
+            id="nivel_organico" class="readings">%NIVEL_ORGANICO%</span>
+            <sup>&#37;</sup>
+        </p>
+        <p>
+            <i class="fas fa-angle-double-down" style="color:#e8c14d;"></i> Nivel Plastico:
+            <span id="nivel_plastico" class="readings">%NIVEL_PLASTICO%</span>
+            <sup>&#37;</sup>
+        </p>
+    </main>
+    <script>
+        setInterval(updateValues, 10000, "nivel_carton");
+        setInterval(updateValues, 10000, "nivel_metal");
+        setInterval(updateValues, 10000, "nivel_vidrio");
+        setInterval(updateValues, 10000, "nivel_organico");
+        setInterval(updateValues, 10000, "nivel_plastico");
+        setInterval(updateValues, 10000, "rssi");
+        setInterval(updateValues, 10000, "timestamp");
+        function updateValues(value) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById(value).innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/" + value, true);
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>
