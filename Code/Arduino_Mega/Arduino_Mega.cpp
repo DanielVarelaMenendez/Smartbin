@@ -182,8 +182,7 @@ void loop() {
                 digitalWrite(pasos, LOW); // ponemos a low «pasos»
                 delayMicroseconds(vel_sel); // leemos la referencia de velocidad
             }
-            digitalWrite(reset, LOW); //Mientras reset este en LOW, el
-            motor permanece apagado
+            digitalWrite(reset, LOW); //Mientras reset este en LOW, el motor permanece apagado
             Serial.write('F');
             delay(300);
         }
