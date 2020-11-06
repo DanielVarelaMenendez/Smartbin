@@ -1,8 +1,7 @@
 #include <Arduino.h>
 //Pines del motor del selector NEMA17
 int pasos = 12; //definimos como «entero» pin digital 12 para dar los pasos al servo
-int direccion = 11; //definimos como «entero» pin
-digital 11 para dar el sentido de giro
+int direccion = 11; //definimos como «entero» pin digital 11 para dar el sentido de giro
 int reset = 10;
 //Pines de los motores de las compuertas 28BY J-48
 int Motores[2][4]={{22,24,26,28} , // Fila 1--> Motor de la puerta 1 (4 pines) ;
@@ -103,8 +102,7 @@ void retrocede (int x){
     delayMicroseconds (vel_comp) ;
 }
 void reset_nema(){
-    digitalWrite(reset, LOW); //Mientras reset este en LOW, el motor
-    permanece apagado
+    digitalWrite(reset, LOW); //Mientras reset este en LOW, el motor permanece apagado
     delay(2000); //Retardo en la instruccion
     digitalWrite(reset, HIGH); //Cuando reset se encuentre en HIGH el motor arranca
 }
@@ -162,8 +160,7 @@ void loop() {
                 digitalWrite(pasos, LOW); // ponemos a low «pasos»
                 delayMicroseconds(vel_sel); // leemos la referencia de velocidad
             }
-            digitalWrite(reset, LOW); //Mientras reset este en LOW, el
-            motor permanece apagado
+            digitalWrite(reset, LOW); //Mientras reset este en LOW, el motor permanece apagado
             //Serial.write(posic_actual);
             Serial.write('F');
             delay(300);
@@ -207,8 +204,7 @@ void loop() {
                 digitalWrite(pasos, LOW); // ponemos a low «pasos»
                 delayMicroseconds(vel_sel); // leemos la referencia de velocidad
             }
-            digitalWrite(reset, LOW); //Mientras reset este en LOW, el
-            motor permanece apagado
+            digitalWrite(reset, LOW); //Mientras reset este en LOW, el motor permanece apagado
             Serial.write('F');
             delay(300);
         }
@@ -229,8 +225,7 @@ void loop() {
                 digitalWrite(pasos, LOW); // ponemos a low «pasos»
                 delayMicroseconds(vel_sel); // leemos la referencia de velocidad
             }
-            digitalWrite(reset, LOW); //Mientras reset este en LOW, el
-            motor permanece apagado
+            digitalWrite(reset, LOW); //Mientras reset este en LOW, el motor permanece apagado
             Serial.write('F');
             delay(300);
         }
@@ -251,8 +246,7 @@ void loop() {
                 digitalWrite(pasos, LOW); // ponemos a low «pasos»
                 delayMicroseconds(vel_sel); // leemos la referencia de velocidad
             }
-            digitalWrite(reset, LOW); //Mientras reset este en LOW, el
-            motor permanece apagado
+            digitalWrite(reset, LOW); //Mientras reset este en LOW, el motor permanece apagado
             Serial.write('F');
             delay(300);
         }
