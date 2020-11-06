@@ -168,8 +168,7 @@ void loop() {
             getReadings(material); //lee el dato del ultrasonidos recibido,lo guarda en la
             variable material recibido
             sendReadings(material); //envia los datos
-            Serial.write('F'); //envia por el serial una F para indicarle al arduino que ha
-            finalizado
+            Serial.write('F'); //envia por el serial una F para indicarle al arduino que ha finalizado
             delay(300);
         }
     }
